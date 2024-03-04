@@ -67,18 +67,27 @@ const images = [
 // Додати розмітку
 
 const list = document.querySelector("ul.gallery");
-const listItem = images.map(image => `<li class="gallery-item"><a class="gallery-link" href="${image.original}">
+const listItem = images.map(image => `<li class="gallery-item">
+<a class="gallery-link" href="${image.original}">
 <img class="gallery-image" src="${image.preview}" data-source="${image.original}" alt="${image.description}" width="360" height="200"/></a></li>`
 ).join('');
+
 list.insertAdjacentHTML('beforeend', listItem);
+
 //basicLightbox
+
 list.addEventListener("click", (event) => {
     event.preventDefault();
+
     // скидаємо дефолт браузеру
+
    if (event.target.nodeName !== "IMG") {
        return;
+
        // клік між картинками
-      }
-      const instance = basicLightbox.create(`<img src="${event.target.dataset.source}" width="1112" height="640">`); // користувач клікнув на картинку і ми маємо доступ до її атрибутів
+    }
+    
+    const instance = basicLightbox.create(`<img src="${event.target.dataset.source}" width="1112" height="640">`);
+    // атрибути
       instance.show();
 });
